@@ -1,3 +1,4 @@
 import axios from 'axios';
+import {DOMEN} from "../consts";
 
-export const axiosInstance = axios.create({ baseURL: 'http:///192.168.1.121:8000/api' });
+export const axiosInstance = axios.create({ baseURL: `http://${DOMEN}/api` });

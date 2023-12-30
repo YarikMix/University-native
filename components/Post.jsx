@@ -1,10 +1,11 @@
 import styled from "styled-components/native";
 import {Button} from "react-native";
+import {DOMEN} from "../consts";
 
 
 const Post = ({navigation, id, name, faculty}) => {
 
-    const facultyImage = `http://192.168.1.121:8000/api/faculties/${faculty.id}/icon/`
+    const facultyImage = `http://${DOMEN}/api/faculties/${faculty.id}/icon/`
 
     const handlePress = () => {
         navigation.navigate("FullPost", {id: id, name: name });
@@ -14,13 +15,15 @@ const Post = ({navigation, id, name, faculty}) => {
         <PostView>
             <PostDetails>
                 <PostImage source={{uri: facultyImage}} />
-                <PostTitleContainer>
-                    <PostTitle>{name}</PostTitle>
-                </PostTitleContainer>
+                <PostRightDetails>
+                    <PostTitleContainer>
+                        <PostTitle>{name}</PostTitle>
+                    </PostTitleContainer>
+                    <PostButton>
+                        <Button title='Открыть' onPress={handlePress} />
+                    </PostButton>
+                </PostRightDetails>
             </PostDetails>
-            <PostButton>
-                <Button title='Открыть' onPress={handlePress} />
-            </PostButton>
         </PostView>
     )
 }
@@ -57,6 +60,11 @@ const PostTitle = styled.Text`
 
 const PostDetails = styled.View`
   flex-direction: row;
+`
+const PostRightDetails = styled.View`
+  flex-direction: column;
+  flex: 1;
+  gap: 20px;
 `
 
 const PostButton = styled.View`

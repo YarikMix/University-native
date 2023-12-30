@@ -1,3 +1,5 @@
+export const DOMEN = "192.168.51.124:8000"
+
 export const COURSES = [
     {
         id: 1,
@@ -14,6 +16,14 @@ export const COURSES = [
     {
         id: 4,
         name: "Четвертый"
+    },
+    {
+        id: 5,
+        name: "Пятый"
+    },
+    {
+        id: 6,
+        name: "Шестой"
     }
 ]
 

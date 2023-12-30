@@ -3,12 +3,12 @@ import styled from 'styled-components/native'
 import {View} from "react-native";
 import {Loading} from "../components/Loader";
 import {axiosInstance} from "../API";
-import {COURSES, EDUCATION_TYPES} from "../consts";
+import {COURSES, DOMEN, EDUCATION_TYPES} from "../consts";
 
 const PostImage = styled.Image`
   border-radius: 10px;
   width: 100%;
-  height: 250px;
+  height: 350px;
   margin-bottom: 20px;
 `
 
@@ -64,7 +64,7 @@ const FullPostScreen = ({ route, navigation }) => {
         )
     }
 
-    const facultyImage = `http://192.168.1.121:8000/api/faculties/${data.faculty.id}/icon/`
+    const facultyImage = `http://${DOMEN}/api/faculties/${data.faculty.id}/icon/`
 
     return (
         <View style={{ padding: 20 }}>
@@ -75,11 +75,23 @@ const FullPostScreen = ({ route, navigation }) => {
                 </PostText>
 
                 <PostText>
+                    Факультет: {data.faculty.name}
+                </PostText>
+
+                <PostText>
                     Курс: {COURSES.find(course => course.id === data.course).name}
                 </PostText>
 
                 <PostText>
                     Вариант обучения: {EDUCATION_TYPES.find(course => course.id === data.education_type).name}
+                </PostText>
+
+                <PostText>
+                    Год начала обучения: {data.year_begin}
+                </PostText>
+
+                <PostText>
+                    Год конца обучения: {data.year_end}
                 </PostText>
 
             </PostDetails>
